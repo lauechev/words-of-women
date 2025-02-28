@@ -1,14 +1,14 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // base: '/',
+  base: '/words-of-women/',
   server: {
     port: 3000,
   },
-  publicDir: 'estaticos',
+  publicDir: 'assets',
   build: {
     outDir: 'publico',
-    assetsDir: 'estaticos',
+    assetsDir: 'assets',
     sourcemap: true,
   },
   css: {

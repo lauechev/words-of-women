@@ -1,3 +1,3 @@
-import './scss/estilos.scss';
+import './scss/styles.scss';
 
 console.log('..:: EnFlujo ::..');
