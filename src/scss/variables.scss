@@ -1,13 +1,9 @@
 :root {
-  --darkBlue: #052837;
-  --skyBlue: #c7f2f1;
-  --white: #f4f9f8;
+  --cream: #f4e6d8;
+  --emerald: #15403d;
+  --orange: #e5745d;
 
-  --color3: var(--terracota);
-
-  --background1: var(--skyBlue);
-  --background2: var(--white);
-  --colorButton: var(--darkBlue);
-  --colorFont: var(--darkBlue);
-  --colorFontInverted: var(--white);
+  --background: var(--cream);
+  --textColor: var(--darkGreen);
+  --authorColor: var(--orange);
 }
