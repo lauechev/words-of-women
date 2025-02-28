@@ -1,0 +1,59 @@
+name: 🦙 Despliegue
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: 🦙 Desplegar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🐿️ Obtener código del repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐜 Activar Corepack
+        run: corepack enable
+
+      - name: 🐝 Usar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+          cache-dependency-path: './yarn.lock'
+
+      - name: 🦒 Instalar dependencias y hacer build
+        run: |
+          yarn install --immutable
+          yarn build
+
+      - name: 🐉 Configurar Servidor
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: 🦥 Subir archivos exportados
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publico
+
+  deploy:
+    name: 🦅 Despliegue a servidores de Github
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🕊️ Mandar archivos transpilados al servidor de Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
