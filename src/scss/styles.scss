@@ -33,6 +33,15 @@ header {
   z-index: 1;
 }
 
+header img {
+  width: 136px;
+  transition: width 0.4s;
+}
+
+header.scrolled img {
+  width: 70px;
+}
+
 p {
   font-family: 'Syne Extra';
   color: var(--authorColor);

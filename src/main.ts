@@ -1,3 +1,2 @@
 import './scss/styles.scss';
-
-console.log('..:: EnFlujo ::..');
+import './header.ts';
