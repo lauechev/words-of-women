@@ -1,4 +1,5 @@
 const sections = document.querySelectorAll<HTMLElement>('section');
+const bodyTag = document.querySelector<HTMLElement>('body');
 
 const addMovement = function () {
   const topViewport = window.scrollY;
@@ -38,6 +39,15 @@ const addMovement = function () {
     if (contentTag) {
       contentTag.style.top = `${contentDistance}px`;
       contentTag.style.transform = `rotate (-1 *${rotation}deg)`;
+    }
+
+    //check background color
+
+    if (distanceToSection > -100) {
+      const dataBackground = section.getAttribute('data-background') || '';
+      if (bodyTag) {
+        bodyTag.style.backgroundColor = dataBackground;
+      }
     }
   });
 };
